@@ -49,9 +49,9 @@ export default function OrderBlocks({ exercise, submitted, onChange }: Props) {
               exercise.blocks[position] === exercise.blocks[blockIndex];
             const stateClasses = submitted
               ? isCorrectPos
-                ? "border-brand-green bg-green-50 text-green-800"
-                : "border-brand-red bg-red-50 text-red-800"
-              : "border-brand-blue bg-white";
+                ? "border-brand-teal bg-teal-50 text-teal-800"
+                : "border-brand-rose bg-rose-50 text-rose-800"
+              : "border-brand-indigo bg-white";
             return (
               <button
                 key={position}

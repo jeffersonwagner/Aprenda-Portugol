@@ -1,12 +1,15 @@
 import type { Lesson } from "../types";
 
+// Sintaxe validada contra exemplos reais do Portugol Studio (UNIVALI):
+// https://github.com/UNIVALI-LITE/Portugol-Studio
+
 export const lessons: Lesson[] = [
   // ───────────────────────── Unidade 1: Primeiros Passos ─────────────────────────
   {
     id: "pp-1",
     unitId: "primeiros-passos",
     title: "O que é Portugol?",
-    description: "Conheça a estrutura básica de um algoritmo",
+    description: "Conheça a estrutura básica de um programa",
     icon: "💻",
     exercises: [
       {
@@ -26,33 +29,30 @@ export const lessons: Lesson[] = [
       {
         id: "pp-1-2",
         type: "multiple-choice",
-        prompt: "Todo algoritmo em Portugol começa com qual palavra-chave?",
-        options: ["inicio", "algoritmo", "var", "programa"],
+        prompt:
+          "Todo programa em Portugol Studio começa com qual palavra reservada?",
+        options: ["algoritmo", "programa", "var", "main"],
         correctIndex: 1,
-        explanation: "Todo programa começa com 'algoritmo \"nome\"'.",
+        explanation:
+          "Todo programa em Portugol Studio é envolvido pela palavra 'programa' e um par de chaves { }.",
       },
       {
         id: "pp-1-3",
         type: "fill-blank",
-        prompt: "Complete o algoritmo para que ele termine corretamente.",
-        code: 'algoritmo "Meu Primeiro Programa"\ninicio\n  escreva("Olá, mundo!")\n___',
-        options: ["fimalgoritmo", "fim", "fimprograma", "termina"],
-        correctAnswer: "fimalgoritmo",
-        explanation: "Todo algoritmo é encerrado com 'fimalgoritmo'.",
+        prompt: "Complete o programa para que ele feche corretamente.",
+        code: 'programa\n{\n  funcao inicio()\n  {\n    escreva("Olá, mundo!")\n  }\n___',
+        options: ["}", ")", "fimalgoritmo", ";"],
+        correctAnswer: "}",
+        explanation:
+          "Cada chave aberta '{' precisa de uma chave fechada '}' correspondente — aqui fechamos o bloco 'programa'.",
       },
       {
         id: "pp-1-4",
         type: "order-blocks",
-        prompt:
-          "Coloque as linhas na ordem correta para formar um algoritmo válido.",
-        blocks: [
-          'algoritmo "Ola"',
-          "inicio",
-          '  escreva("Olá!")',
-          "fimalgoritmo",
-        ],
+        prompt: "Ordene as linhas para formar a função inicio().",
+        blocks: ["funcao inicio()", "{", 'escreva("Olá!")', "}"],
         explanation:
-          "A estrutura é sempre: algoritmo → inicio → comandos → fimalgoritmo.",
+          "A função 'inicio' contém as instruções que serão executadas quando o programa rodar.",
       },
       {
         id: "pp-1-5",
@@ -60,15 +60,15 @@ export const lessons: Lesson[] = [
         prompt: "Qual comando é usado para exibir uma mensagem na tela?",
         options: ["leia", "escreva", "mostra", "imprime"],
         correctIndex: 1,
-        explanation: "'escreva' exibe texto ou valores na tela.",
+        explanation: "'escreva' exibe texto ou valores no console.",
       },
     ],
   },
   {
     id: "pp-2",
     unitId: "primeiros-passos",
-    title: "Comentários e Comandos",
-    description: "Documente seu código e entenda os comandos",
+    title: "Comentários e Blocos",
+    description: "Documente seu código e entenda os blocos { }",
     icon: "📝",
     exercises: [
       {
@@ -82,13 +82,14 @@ export const lessons: Lesson[] = [
           "' comentário",
         ],
         correctIndex: 1,
-        explanation: "Comentários de uma linha começam com //.",
+        explanation:
+          "Comentários de uma linha começam com //. Também existem comentários de bloco com /* ... */.",
       },
       {
         id: "pp-2-2",
         type: "fill-blank",
         prompt: "Complete para transformar a linha em um comentário.",
-        code: 'algoritmo "Comentado"\ninicio\n  ___ Este programa exibe uma saudação\n  escreva("Bom dia!")\nfimalgoritmo',
+        code: 'funcao inicio()\n{\n  ___ Exibe uma saudação\n  escreva("Bom dia!")\n}',
         options: ["//", "/*", "#", "--"],
         correctAnswer: "//",
         explanation: "O compilador ignora tudo depois de // na mesma linha.",
@@ -96,27 +97,28 @@ export const lessons: Lesson[] = [
       {
         id: "pp-2-3",
         type: "multiple-choice",
-        prompt: "Como os comandos em Portugol geralmente são separados?",
+        prompt:
+          "Como delimitamos o início e o fim de um bloco de comandos (como o corpo de uma função) em Portugol Studio?",
         options: [
-          "Por ponto e vírgula (;)",
-          "Por uma nova linha",
-          "Por ponto final (.)",
-          "Por chaves ({ })",
+          "Com as palavras inicio e fim",
+          "Com chaves { }",
+          "Com ponto e vírgula",
+          "Apenas com indentação (espaços)",
         ],
         correctIndex: 1,
         explanation:
-          "Diferente de outras linguagens, cada comando fica em sua própria linha.",
+          "Diferente de outros dialetos de Portugol, o Portugol Studio usa chaves { } para marcar blocos, como em C ou Java.",
       },
       {
         id: "pp-2-4",
         type: "order-blocks",
-        prompt: "Ordene as linhas deste algoritmo comentado.",
+        prompt: "Ordene as linhas deste programa comentado.",
         blocks: [
-          'algoritmo "Saudacao"',
-          "// Programa que cumprimenta o usuário",
-          "inicio",
-          '  escreva("Olá!")',
-          "fimalgoritmo",
+          "funcao inicio()",
+          "{",
+          "// Cumprimenta o usuário",
+          'escreva("Olá!")',
+          "}",
         ],
       },
       {
@@ -139,21 +141,21 @@ export const lessons: Lesson[] = [
     id: "es-1",
     unitId: "entrada-saida",
     title: "Variáveis e Tipos",
-    description: "inteiro, real, caractere e logico",
+    description: "inteiro, real, cadeia, caracter e logico",
     icon: "🔤",
     exercises: [
       {
         id: "es-1-1",
         type: "multiple-choice",
         prompt: "Qual tipo é usado para armazenar números inteiros?",
-        options: ["real", "inteiro", "caractere", "logico"],
+        options: ["real", "inteiro", "cadeia", "logico"],
         correctIndex: 1,
       },
       {
         id: "es-1-2",
         type: "multiple-choice",
         prompt: "Qual tipo é usado para armazenar valores como 3.14?",
-        options: ["inteiro", "real", "caractere", "logico"],
+        options: ["inteiro", "real", "cadeia", "logico"],
         correctIndex: 1,
         explanation: "Números com casas decimais usam o tipo 'real'.",
       },
@@ -161,23 +163,25 @@ export const lessons: Lesson[] = [
         id: "es-1-3",
         type: "fill-blank",
         prompt: "Complete a declaração da variável 'idade'.",
-        code: "var\n  idade: ___\ninicio\n  idade <- 25",
-        options: ["inteiro", "real", "caractere", "logico"],
+        code: "___ idade\nidade = 25",
+        options: ["inteiro", "real", "cadeia", "logico"],
         correctAnswer: "inteiro",
       },
       {
         id: "es-1-4",
         type: "multiple-choice",
         prompt: "Qual tipo armazena apenas verdadeiro ou falso?",
-        options: ["inteiro", "real", "logico", "caractere"],
+        options: ["inteiro", "real", "logico", "cadeia"],
         correctIndex: 2,
         explanation: "O tipo 'logico' guarda 'verdadeiro' ou 'falso'.",
       },
       {
         id: "es-1-5",
         type: "order-blocks",
-        prompt: "Ordene a declaração e o uso da variável 'nome'.",
-        blocks: ["var", "  nome: caractere", "inicio", '  nome <- "Ana"', "fimalgoritmo"],
+        prompt: "Ordene a declaração, atribuição e exibição da variável 'nome'.",
+        blocks: ["cadeia nome", 'nome = "Ana"', "escreva(nome)"],
+        explanation:
+          "'cadeia' é o tipo usado para texto (strings) em Portugol Studio.",
       },
     ],
   },
@@ -193,45 +197,44 @@ export const lessons: Lesson[] = [
         type: "multiple-choice",
         prompt:
           "Qual comando lê um valor digitado pelo usuário e guarda em uma variável?",
-        options: ["escreva", "leia", "var", "atribui"],
+        options: ["escreva", "leia", "cadeia", "atribui"],
         correctIndex: 1,
       },
       {
         id: "es-2-2",
         type: "fill-blank",
         prompt: "Complete para ler o nome digitado pelo usuário.",
-        code: 'var\n  nome: caractere\ninicio\n  escreva("Digite seu nome: ")\n  ___(nome)\nfimalgoritmo',
-        options: ["leia", "escreva", "var", "nome"],
+        code: 'cadeia nome\nescreva("Digite seu nome: ")\n___(nome)',
+        options: ["leia", "escreva", "cadeia", "nome"],
         correctAnswer: "leia",
       },
       {
         id: "es-2-3",
         type: "multiple-choice",
-        prompt: "Qual símbolo é usado para atribuir um valor a uma variável?",
-        options: ["=", "<-", "==", "->"],
+        prompt:
+          "Qual símbolo é usado para atribuir um valor a uma variável em Portugol Studio?",
+        options: ["<-", "=", "==", "->"],
         correctIndex: 1,
-        explanation: "A seta '<-' é o operador de atribuição do Portugol.",
+        explanation:
+          "Portugol Studio usa '=' para atribuição, como em C — diferente de dialetos como o VisuAlg, que usam '<-'.",
       },
       {
         id: "es-2-4",
         type: "fill-blank",
         prompt: "Complete a atribuição do valor 10 à variável x.",
-        code: "var\n  x: inteiro\ninicio\n  x ___ 10\n  escreva(x)\nfimalgoritmo",
-        options: ["<-", "=", "==", ":"],
-        correctAnswer: "<-",
+        code: "inteiro x\nx ___ 10\nescreva(x)",
+        options: ["=", "<-", "==", ":"],
+        correctAnswer: "=",
       },
       {
         id: "es-2-5",
         type: "order-blocks",
         prompt:
-          "Ordene um algoritmo que lê a idade e exibe uma mensagem com ela.",
+          "Ordene um trecho que lê a idade e exibe uma mensagem com ela.",
         blocks: [
-          "var",
-          "  idade: inteiro",
-          "inicio",
-          "  leia(idade)",
-          '  escreva("Sua idade é: ", idade)',
-          "fimalgoritmo",
+          "inteiro idade",
+          "leia(idade)",
+          'escreva("Sua idade é: ", idade)',
         ],
       },
     ],
@@ -241,30 +244,32 @@ export const lessons: Lesson[] = [
   {
     id: "dec-1",
     unitId: "decisoes",
-    title: "Se... Então",
-    description: "Tome decisões no seu algoritmo",
+    title: "Se... Senão",
+    description: "Tome decisões no seu programa",
     icon: "🔀",
     exercises: [
       {
         id: "dec-1-1",
         type: "multiple-choice",
         prompt: "Qual estrutura é usada para tomar decisões em Portugol?",
-        options: ["para", "se...entao", "enquanto", "leia"],
+        options: ["para", "se...senao", "enquanto", "leia"],
         correctIndex: 1,
       },
       {
         id: "dec-1-2",
         type: "fill-blank",
-        prompt: "Complete a estrutura condicional.",
-        code: 'se (idade >= 18) ___\n  escreva("Maior de idade")\nfimse',
-        options: ["entao", "faca", "inicio", "então:"],
-        correctAnswer: "entao",
+        prompt: "Complete para abrir o bloco de comandos do 'se'.",
+        code: 'se (idade >= 18)\n___\n  escreva("Maior de idade")\n}',
+        options: ["{", "entao", "faca", ":"],
+        correctAnswer: "{",
+        explanation:
+          "Em Portugol Studio não existe a palavra 'entao' — o bloco começa direto com '{'.",
       },
       {
         id: "dec-1-3",
         type: "multiple-choice",
         prompt:
-          'Qual é a saída deste trecho?\n\nx <- 7\nse (x > 5) entao\n  escreva("Maior")\nsenao\n  escreva("Menor")\nfimse',
+          'Qual é a saída deste trecho?\n\ninteiro x = 7\nse (x > 5)\n{\n  escreva("Maior")\n}\nsenao\n{\n  escreva("Menor")\n}',
         options: ["Maior", "Menor", "7", "Erro"],
         correctIndex: 0,
       },
@@ -273,18 +278,27 @@ export const lessons: Lesson[] = [
         type: "order-blocks",
         prompt: "Ordene a estrutura que verifica se o aluno foi aprovado.",
         blocks: [
-          "se (nota >= 6) entao",
-          '  escreva("Aprovado")',
+          "se (nota >= 6)",
+          "{",
+          'escreva("Aprovado")',
+          "}",
           "senao",
-          '  escreva("Reprovado")',
-          "fimse",
+          "{",
+          'escreva("Reprovado")',
+          "}",
         ],
       },
       {
         id: "dec-1-5",
         type: "multiple-choice",
-        prompt: "Qual palavra-chave finaliza uma estrutura se...entao?",
-        options: ["fim", "fimse", "fimentao", "termina"],
+        prompt:
+          "Como se delimita o bloco de comandos dentro de um 'se' em Portugol Studio?",
+        options: [
+          "Com a palavra fimse",
+          "Com chaves { }",
+          "Com ponto e vírgula",
+          "Com a palavra entao",
+        ],
         correctIndex: 1,
       },
     ],
@@ -299,9 +313,11 @@ export const lessons: Lesson[] = [
       {
         id: "dec-2-1",
         type: "multiple-choice",
-        prompt: "Qual operador representa 'diferente de' em Portugol?",
+        prompt: "Qual operador representa 'diferente de' em Portugol Studio?",
         options: ["!=", "<>", "><", "not="],
-        correctIndex: 1,
+        correctIndex: 0,
+        explanation:
+          "Portugol Studio usa operadores no estilo C: == (igual) e != (diferente).",
       },
       {
         id: "dec-2-2",
@@ -310,12 +326,14 @@ export const lessons: Lesson[] = [
           "Qual operador lógico representa 'E' (as duas condições precisam ser verdadeiras)?",
         options: ["ou", "e", "nao", "&&"],
         correctIndex: 1,
+        explanation:
+          "Os operadores lógicos continuam sendo palavras em português: e, ou, nao.",
       },
       {
         id: "dec-2-3",
         type: "fill-blank",
         prompt: "Complete para exigir as duas condições verdadeiras.",
-        code: 'se (idade >= 18) ___ (possuiCarteira = verdadeiro) entao\n  escreva("Pode dirigir")\nfimse',
+        code: 'se (idade >= 18 ___ possuiCarteira == verdadeiro)\n{\n  escreva("Pode dirigir")\n}',
         options: ["e", "ou", "nao", "="],
         correctAnswer: "e",
       },
@@ -323,7 +341,7 @@ export const lessons: Lesson[] = [
         id: "dec-2-4",
         type: "multiple-choice",
         prompt:
-          'Qual é a saída deste trecho?\n\na <- 10\nb <- 20\nse (a > b) ou (a < b) entao\n  escreva("Diferentes")\nsenao\n  escreva("Iguais")\nfimse',
+          'Qual é a saída deste trecho?\n\ninteiro a = 10, b = 20\nse (a > b ou a < b)\n{\n  escreva("Diferentes")\n}\nsenao\n{\n  escreva("Iguais")\n}',
         options: ["Diferentes", "Iguais", "10", "20"],
         correctIndex: 0,
         explanation: "'ou' basta que uma das condições seja verdadeira.",
@@ -331,9 +349,12 @@ export const lessons: Lesson[] = [
       {
         id: "dec-2-5",
         type: "multiple-choice",
-        prompt: "Qual operador representa 'maior ou igual'?",
-        options: [">=", "=>", ">", "=="],
-        correctIndex: 0,
+        prompt:
+          "Qual operador representa 'igual a' (comparação) em Portugol Studio?",
+        options: ["=", "==", "eq", ":="],
+        correctIndex: 1,
+        explanation:
+          "Cuidado para não confundir: '=' atribui um valor, '==' compara dois valores.",
       },
     ],
   },
@@ -342,7 +363,7 @@ export const lessons: Lesson[] = [
   {
     id: "rep-1",
     unitId: "repeticoes",
-    title: "Para...Faça",
+    title: "Para (i = ...; ...; ...)",
     description: "Repita comandos um número definido de vezes",
     icon: "🔁",
     exercises: [
@@ -351,22 +372,24 @@ export const lessons: Lesson[] = [
         type: "multiple-choice",
         prompt:
           "Qual estrutura de repetição é ideal quando sabemos exatamente quantas vezes repetir?",
-        options: ["enquanto", "para", "repita", "se"],
+        options: ["enquanto", "para", "faca...enquanto", "se"],
         correctIndex: 1,
       },
       {
         id: "rep-1-2",
         type: "fill-blank",
-        prompt: "Complete o laço que conta de 1 até 10.",
-        code: "para i de 1 ___ 10 faca\n  escreva(i)\nfimpara",
-        options: ["ate", "até", "para", "entao"],
-        correctAnswer: "ate",
+        prompt: "Complete o incremento do laço que conta de 1 até 10.",
+        code: "para (inteiro i = 1; i <= 10; ___)\n{\n  escreva(i)\n}",
+        options: ["i++", "i + 1", "incrementa(i)", "proximo i"],
+        correctAnswer: "i++",
+        explanation:
+          "O laço 'para' tem três partes separadas por ';': valor inicial, condição e incremento.",
       },
       {
         id: "rep-1-3",
         type: "multiple-choice",
         prompt:
-          'Qual é a saída deste trecho?\n\npara i de 1 ate 3 faca\n  escreva(i, " ")\nfimpara',
+          'Qual é a saída deste trecho?\n\npara (inteiro i = 1; i <= 3; i++)\n{\n  escreva(i, " ")\n}',
         options: ["1 2 3", "0 1 2", "1 2 3 4", "3 2 1"],
         correctIndex: 0,
       },
@@ -374,13 +397,19 @@ export const lessons: Lesson[] = [
         id: "rep-1-4",
         type: "order-blocks",
         prompt: "Ordene o laço que exibe os números de 1 a 5.",
-        blocks: ["para i de 1 ate 5 faca", "  escreva(i)", "fimpara"],
+        blocks: ["para (inteiro i = 1; i <= 5; i++)", "{", "escreva(i)", "}"],
       },
       {
         id: "rep-1-5",
         type: "multiple-choice",
-        prompt: "Qual palavra-chave encerra um laço 'para'?",
-        options: ["fim", "fimpara", "fimpar", "para_fim"],
+        prompt:
+          "Em 'para (inteiro i = 1; i <= 10; i++)', qual é o papel da parte 'i <= 10'?",
+        options: [
+          "O valor inicial do contador",
+          "A condição que mantém o laço repetindo",
+          "O incremento do contador",
+          "Um comentário",
+        ],
         correctIndex: 1,
       },
     ],
@@ -388,14 +417,14 @@ export const lessons: Lesson[] = [
   {
     id: "rep-2",
     unitId: "repeticoes",
-    title: "Enquanto e Repita",
+    title: "Enquanto e Faça...Enquanto",
     description: "Repita comandos enquanto uma condição for válida",
     icon: "🔄",
     exercises: [
       {
         id: "rep-2-1",
         type: "multiple-choice",
-        prompt: "A estrutura 'enquanto...faca' testa a condição:",
+        prompt: "A estrutura 'enquanto (condicao) { }' testa a condição:",
         options: [
           "depois de executar o bloco",
           "antes de executar o bloco",
@@ -409,43 +438,46 @@ export const lessons: Lesson[] = [
       {
         id: "rep-2-2",
         type: "multiple-choice",
-        prompt: "A estrutura 'repita...ate' testa a condição:",
+        prompt: "A estrutura 'faca { } enquanto(condicao)' executa o bloco:",
         options: [
-          "antes de executar o bloco",
-          "depois de executar o bloco",
-          "nunca",
-          "duas vezes",
+          "só se a condição já for verdadeira antes de começar",
+          "pelo menos uma vez, testando a condição no final",
+          "nunca — é apenas um comentário",
+          "somente quando a condição for falsa",
         ],
         correctIndex: 1,
         explanation:
-          "O bloco 'repita' sempre executa pelo menos uma vez, pois a condição é testada no final.",
+          "'faca...enquanto' sempre executa o bloco pelo menos uma vez, pois a condição só é testada no final.",
       },
       {
         id: "rep-2-3",
         type: "fill-blank",
         prompt: "Complete o laço 'enquanto'.",
-        code: "x <- 0\nenquanto (x < 5) ___\n  x <- x + 1\n  escreva(x)\nfimenquanto",
-        options: ["faca", "entao", "ate", "fimenquanto"],
-        correctAnswer: "faca",
+        code: "inteiro x = 0\nenquanto (x < 5)\n___\n  x = x + 1\n  escreva(x)\n}",
+        options: ["{", "faca", "entao", "fimenquanto"],
+        correctAnswer: "{",
       },
       {
         id: "rep-2-4",
         type: "multiple-choice",
         prompt:
-          "Qual é a saída deste trecho?\n\nx <- 1\nrepita\n  escreva(x)\n  x <- x + 1\nate (x > 3)",
+          "Qual é a saída deste trecho?\n\ninteiro x = 1\nfaca\n{\n  escreva(x)\n  x = x + 1\n}\nenquanto(x <= 3)",
         options: ["1 2 3", "1 2 3 4", "0 1 2", "Nunca para"],
         correctIndex: 0,
+        explanation:
+          "Repare que a condição de 'faca...enquanto' indica quando CONTINUAR repetindo (não quando parar).",
       },
       {
         id: "rep-2-5",
         type: "order-blocks",
         prompt: "Ordene o laço que conta de 1 até 3 usando 'enquanto'.",
         blocks: [
-          "x <- 1",
-          "enquanto (x <= 3) faca",
-          "  escreva(x)",
-          "  x <- x + 1",
-          "fimenquanto",
+          "inteiro x = 1",
+          "enquanto (x <= 3)",
+          "{",
+          "escreva(x)",
+          "x = x + 1",
+          "}",
         ],
       },
     ],
@@ -462,39 +494,52 @@ export const lessons: Lesson[] = [
       {
         id: "vet-1-1",
         type: "multiple-choice",
-        prompt: "Qual palavra é usada para declarar um vetor (array) em Portugol?",
-        options: ["lista", "vetor", "array", "conjunto"],
+        prompt:
+          "Como se declara um vetor de 5 números reais chamado 'notas' em Portugol Studio?",
+        options: [
+          "notas: vetor[1..5] de real",
+          "real notas[5]",
+          "vetor real notas(5)",
+          "array<real> notas",
+        ],
         correctIndex: 1,
+        explanation:
+          "A sintaxe é 'tipo nome[tamanho]', igual à declaração de arrays em C.",
       },
       {
         id: "vet-1-2",
         type: "fill-blank",
-        prompt: "Complete a declaração do vetor 'notas'.",
-        code: "var\n  notas: vetor[1..5] ___ real",
-        options: ["de", "tipo", "como", "para"],
-        correctAnswer: "de",
+        prompt: "Complete a declaração de um vetor de 5 posições.",
+        code: "real notas___",
+        options: ["[5]", "[1..5]", "(5)", ".5"],
+        correctAnswer: "[5]",
       },
       {
         id: "vet-1-3",
         type: "multiple-choice",
-        prompt: "Em 'notas: vetor[1..5] de real', quantas posições o vetor possui?",
-        options: ["4", "5", "6", "Indefinido"],
-        correctIndex: 1,
+        prompt:
+          "Em Portugol Studio, qual é o índice da PRIMEIRA posição de um vetor?",
+        options: ["0", "1", "-1", "Depende do tamanho"],
+        correctIndex: 0,
+        explanation:
+          "Diferente de dialetos como o VisuAlg (que começam em 1), os vetores do Portugol Studio começam no índice 0.",
       },
       {
         id: "vet-1-4",
         type: "fill-blank",
-        prompt: "Complete a atribuição do primeiro valor do vetor.",
-        code: "var\n  numeros: vetor[1..3] de inteiro\ninicio\n  numeros[1] ___ 10",
-        options: ["<-", "=", "==", ":"],
-        correctAnswer: "<-",
+        prompt: "Complete a atribuição da primeira posição do vetor.",
+        code: "inteiro numeros[3]\nnumeros[0] ___ 10",
+        options: ["=", "<-", "==", ":"],
+        correctAnswer: "=",
       },
       {
         id: "vet-1-5",
         type: "multiple-choice",
-        prompt: "Como acessamos o segundo elemento do vetor 'numeros'?",
-        options: ["numeros(2)", "numeros[2]", "numeros.2", "numeros{2}"],
+        prompt:
+          "Em 'inteiro numeros[3]', qual é o índice da ÚLTIMA posição válida?",
+        options: ["3", "2", "4", "Indefinido"],
         correctIndex: 1,
+        explanation: "Um vetor de tamanho 3 tem posições válidas 0, 1 e 2.",
       },
     ],
   },
@@ -509,40 +554,40 @@ export const lessons: Lesson[] = [
         id: "vet-2-1",
         type: "multiple-choice",
         prompt:
-          'Qual é a saída deste trecho?\n\nn[1] <- 10\nn[2] <- 20\nn[3] <- 30\npara i de 1 ate 3 faca\n  escreva(n[i], " ")\nfimpara',
-        options: ["10 20 30", "1 2 3", "30 20 10", "n[1] n[2] n[3]"],
+          'Qual é a saída deste trecho?\n\ninteiro n[3]\nn[0] = 10\nn[1] = 20\nn[2] = 30\npara (inteiro i = 0; i < 3; i++)\n{\n  escreva(n[i], " ")\n}',
+        options: ["10 20 30", "1 2 3", "30 20 10", "n[0] n[1] n[2]"],
         correctIndex: 0,
       },
       {
         id: "vet-2-2",
         type: "order-blocks",
         prompt: "Ordene o laço que lê 3 valores para dentro do vetor n.",
-        blocks: ["para i de 1 ate 3 faca", "  leia(n[i])", "fimpara"],
+        blocks: ["para (inteiro i = 0; i < 3; i++)", "{", "leia(n[i])", "}"],
       },
       {
         id: "vet-2-3",
         type: "multiple-choice",
         prompt:
           "Qual estrutura de repetição é mais comum para percorrer todas as posições de um vetor de tamanho conhecido?",
-        options: ["enquanto", "para", "repita", "se"],
+        options: ["enquanto", "para", "faca...enquanto", "se"],
         correctIndex: 1,
       },
       {
         id: "vet-2-4",
         type: "fill-blank",
         prompt: "Complete o laço que soma todos os elementos do vetor n.",
-        code: "soma <- 0\npara i de 1 ate 5 faca\n  soma <- soma ___ n[i]\nfimpara",
-        options: ["+", "<-", "=", "*"],
+        code: "inteiro soma = 0\npara (inteiro i = 0; i < 5; i++)\n{\n  soma = soma ___ n[i]\n}",
+        options: ["+", "=", "==", "*"],
         correctAnswer: "+",
       },
       {
         id: "vet-2-5",
         type: "multiple-choice",
         prompt:
-          "O que acontece se tentarmos acessar 'notas[10]' em um vetor declarado como 'vetor[1..5] de real'?",
+          "Em um vetor declarado como 'inteiro notas[5]', o que acontece ao acessar 'notas[5]'?",
         options: [
           "Retorna zero automaticamente",
-          "É um erro de índice fora dos limites",
+          "É um erro: o índice válido vai de 0 a 4",
           "O vetor cresce automaticamente",
           "Nada acontece",
         ],
@@ -551,18 +596,19 @@ export const lessons: Lesson[] = [
     ],
   },
 
-  // ───────────────────────── Unidade 6: Funções e Procedimentos ─────────────────────────
+  // ───────────────────────── Unidade 6: Funções ─────────────────────────
   {
     id: "fun-1",
     unitId: "funcoes",
-    title: "Funções",
-    description: "Blocos de código que retornam um valor",
+    title: "Funções com Retorno",
+    description: "Blocos de código que devolvem um valor",
     icon: "⚙️",
     exercises: [
       {
         id: "fun-1-1",
         type: "multiple-choice",
-        prompt: "Qual palavra-chave declara uma função em Portugol?",
+        prompt:
+          "Qual palavra reservada declara uma função em Portugol Studio?",
         options: ["procedimento", "funcao", "metodo", "rotina"],
         correctIndex: 1,
       },
@@ -570,7 +616,7 @@ export const lessons: Lesson[] = [
         id: "fun-1-2",
         type: "fill-blank",
         prompt: "Complete o comando que devolve o valor calculado.",
-        code: "funcao dobro(x: inteiro): inteiro\ninicio\n  ___ x * 2\nfimfuncao",
+        code: "funcao inteiro dobro(inteiro x)\n{\n  ___ x * 2\n}",
         options: ["retorne", "escreva", "retorna_valor", "devolve"],
         correctAnswer: "retorne",
       },
@@ -578,12 +624,12 @@ export const lessons: Lesson[] = [
         id: "fun-1-3",
         type: "multiple-choice",
         prompt:
-          "O que aparece depois dos dois-pontos em 'funcao soma(a, b: inteiro): inteiro'?",
+          "Em 'funcao inteiro soma(inteiro a, inteiro b)', o que significa o 'inteiro' logo após 'funcao'?",
         options: [
           "O nome da função",
           "O tipo de retorno da função",
           "Um comentário",
-          "O valor inicial",
+          "O tipo do primeiro parâmetro",
         ],
         correctIndex: 1,
       },
@@ -592,17 +638,17 @@ export const lessons: Lesson[] = [
         type: "order-blocks",
         prompt: "Ordene a função que calcula o quadrado de um número.",
         blocks: [
-          "funcao quadrado(n: inteiro): inteiro",
-          "inicio",
-          "  retorne n * n",
-          "fimfuncao",
+          "funcao inteiro quadrado(inteiro n)",
+          "{",
+          "retorne n * n",
+          "}",
         ],
       },
       {
         id: "fun-1-5",
         type: "multiple-choice",
         prompt:
-          "Qual é a saída deste programa?\n\nfuncao triplo(x: inteiro): inteiro\ninicio\n  retorne x * 3\nfimfuncao\n\ninicio\n  escreva(triplo(4))\nfimalgoritmo",
+          "Qual é a saída deste programa?\n\nfuncao inteiro triplo(inteiro x)\n{\n  retorne x * 3\n}\n\nfuncao inicio()\n{\n  escreva(triplo(4))\n}",
         options: ["12", "7", "4", "43"],
         correctIndex: 0,
       },
@@ -611,56 +657,59 @@ export const lessons: Lesson[] = [
   {
     id: "fun-2",
     unitId: "funcoes",
-    title: "Procedimentos",
-    description: "Blocos de código que executam ações",
+    title: "Funções sem Retorno",
+    description: "O equivalente aos 'procedimentos' de outros dialetos",
     icon: "🧩",
     exercises: [
       {
         id: "fun-2-1",
         type: "multiple-choice",
-        prompt: "Qual a principal diferença entre função e procedimento?",
+        prompt:
+          "Como se escreve, em Portugol Studio, uma função que NÃO devolve nenhum valor (o que em outros dialetos é chamado de 'procedimento')?",
         options: [
-          "Procedimento não pode receber parâmetros",
-          "Função retorna um valor, procedimento não",
-          "Não há diferença",
-          "Função só existe em Python",
+          "Usando a palavra reservada 'procedimento'",
+          "Uma 'funcao' comum, apenas sem escrever tipo de retorno antes do nome",
+          "Usando 'funcao vazia'",
+          "Não é possível criar funções sem retorno",
         ],
         correctIndex: 1,
+        explanation:
+          "Portugol Studio não tem a palavra 'procedimento': toda sub-rotina é 'funcao', e o tipo antes do nome é opcional — sem ele, a função é do tipo 'vazio'.",
       },
       {
         id: "fun-2-2",
         type: "fill-blank",
-        prompt: "Complete a declaração do procedimento.",
-        code: '___ saudacao(nome: caractere)\ninicio\n  escreva("Olá, ", nome)\nfimprocedimento',
-        options: ["procedimento", "funcao", "algoritmo", "var"],
-        correctAnswer: "procedimento",
+        prompt: "Complete a declaração desta função sem retorno.",
+        code: '___ saudacao(cadeia nome)\n{\n  escreva("Olá, ", nome)\n}',
+        options: ["funcao", "funcao vazio", "procedimento", "metodo"],
+        correctAnswer: "funcao",
       },
       {
         id: "fun-2-3",
         type: "multiple-choice",
-        prompt: "Qual palavra-chave finaliza um procedimento?",
-        options: ["fimfuncao", "fimprocedimento", "fim", "fimalgoritmo"],
+        prompt: "O tipo 'vazio' em Portugol Studio representa:",
+        options: [
+          "Um vetor sem elementos",
+          "A ausência de valor de retorno de uma função",
+          "Um erro de compilação",
+          "Um tipo numérico",
+        ],
         correctIndex: 1,
       },
       {
         id: "fun-2-4",
         type: "order-blocks",
-        prompt: "Ordene o procedimento que exibe uma mensagem de boas-vindas.",
-        blocks: [
-          "procedimento mensagem()",
-          "inicio",
-          '  escreva("Bem-vindo!")',
-          "fimprocedimento",
-        ],
+        prompt: "Ordene a função que exibe uma mensagem de boas-vindas.",
+        blocks: ["funcao mensagem()", "{", 'escreva("Bem-vindo!")', "}"],
       },
       {
         id: "fun-2-5",
         type: "multiple-choice",
-        prompt: "Por que usamos funções e procedimentos ao programar?",
+        prompt: "Por que usamos funções ao programar?",
         options: [
           "Para deixar o código mais lento",
           "Para organizar e reaproveitar trechos de código",
-          "Porque são obrigatórios em todo algoritmo",
+          "Porque são obrigatórias em todo programa",
           "Para substituir variáveis",
         ],
         correctIndex: 1,

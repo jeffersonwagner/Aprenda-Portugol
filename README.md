@@ -1,20 +1,25 @@
 # Aprenda Portugol
 
-Um "Duolingo" para quem está aprendendo lógica de programação com **Portugol**
-(pseudocódigo em português, no estilo VisuAlg). Trilha de lições com
-exercícios curtos e interativos, corações (vidas), XP e sequência de dias —
-tudo salvo localmente no navegador.
+Uma trilha gamificada de lições para aprender lógica de programação com
+**Portugol**, na sintaxe do [Portugol Studio](https://github.com/UNIVALI-LITE/Portugol-Studio)
+(UNIVALI) — a mesma linguagem do Portugol Web Studio. Exercícios curtos e
+interativos, corações (vidas), XP e sequência de dias — tudo salvo
+localmente no navegador.
+
+A sintaxe de cada exercício foi conferida contra exemplos reais do
+repositório oficial do Portugol Studio, para ficar fiel ao que é ensinado
+e executado nessas ferramentas.
 
 ## Conteúdo
 
 6 unidades, 12 lições, 60 exercícios cobrindo:
 
-1. **Primeiros Passos** — estrutura de um algoritmo, comentários
-2. **Entrada e Saída** — variáveis, tipos (`inteiro`, `real`, `caractere`, `logico`), `leia`/`escreva`
-3. **Decisões** — `se...entao...senao`, operadores relacionais e lógicos
-4. **Repetições** — `para`, `enquanto`, `repita...ate`
-5. **Vetores** — declaração e percorrimento de vetores
-6. **Funções e Procedimentos** — `funcao`, `procedimento`, `retorne`
+1. **Primeiros Passos** — estrutura `programa { funcao inicio() { ... } }`, comentários
+2. **Entrada e Saída** — variáveis, tipos (`inteiro`, `real`, `cadeia`, `caracter`, `logico`), `leia`/`escreva`
+3. **Decisões** — `se (...) { } senao { }`, operadores relacionais (`==`, `!=`) e lógicos (`e`, `ou`, `nao`)
+4. **Repetições** — `para (inteiro i = 1; i <= n; i++)`, `enquanto`, `faca...enquanto`
+5. **Vetores** — declaração (`tipo nome[tamanho]`) e percorrimento — índices começam em **0**
+6. **Funções** — `funcao tipo nome(...)` com `retorne`; funções sem tipo de retorno (o equivalente a "procedimento" em outros dialetos)
 
 Cada lição mistura três tipos de exercício: múltipla escolha, completar
 código (fill-in-the-blank) e ordenar blocos de código.

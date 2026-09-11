@@ -185,9 +185,9 @@ export default function LessonPage() {
             <button
               type="button"
               onClick={handleContinue}
-              style={accentShadow(lastCorrect ? "#46a302" : "#d43939")}
+              style={accentShadow(lastCorrect ? "#0f766e" : "#be123c")}
               className={`btn-3d rounded-2xl px-8 py-3 text-base font-extrabold text-white ${
-                lastCorrect ? "bg-brand-green" : "bg-brand-red"
+                lastCorrect ? "bg-brand-teal" : "bg-brand-rose"
               }`}
             >
               Continuar
@@ -197,8 +197,8 @@ export default function LessonPage() {
               type="button"
               onClick={handleSubmit}
               disabled={!isAnswerComplete(exercise, answer)}
-              style={accentShadow("#46a302")}
-              className="btn-3d rounded-2xl bg-brand-green px-8 py-3 text-base font-extrabold text-white"
+              style={accentShadow("#0f766e")}
+              className="btn-3d rounded-2xl bg-brand-teal px-8 py-3 text-base font-extrabold text-white"
             >
               Verificar
             </button>

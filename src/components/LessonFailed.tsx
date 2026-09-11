@@ -22,8 +22,8 @@ export default function LessonFailed({ onRetry, onExit }: LessonFailedProps) {
         <button
           type="button"
           onClick={onRetry}
-          style={accentShadow("#1899d6")}
-          className="btn-3d w-full rounded-2xl bg-brand-blue py-4 text-lg font-extrabold text-white"
+          style={accentShadow("#4338ca")}
+          className="btn-3d w-full rounded-2xl bg-brand-indigo py-4 text-lg font-extrabold text-white"
         >
           Tentar novamente
         </button>

@@ -5,11 +5,11 @@ import { useProgress } from "../state/progress";
 import LessonNode, { type LessonStatus } from "./LessonNode";
 
 const unitBannerClasses: Record<string, string> = {
-  "brand-green": "bg-brand-green",
-  "brand-blue": "bg-brand-blue",
-  "brand-yellow": "bg-brand-yellow",
-  "brand-red": "bg-brand-red",
-  "brand-purple": "bg-brand-purple",
+  "brand-teal": "bg-brand-teal",
+  "brand-indigo": "bg-brand-indigo",
+  "brand-amber": "bg-brand-amber",
+  "brand-rose": "bg-brand-rose",
+  "brand-violet": "bg-brand-violet",
 };
 
 export default function Trail() {
@@ -18,15 +18,20 @@ export default function Trail() {
 
   return (
     <div className="mx-auto max-w-md pb-16">
-      {units.map((unit) => (
+      {units.map((unit, unitIndex) => (
         <section key={unit.id} className="mb-10">
           <div
-            className={`mx-4 mb-8 rounded-2xl px-5 py-4 text-white shadow-md sm:mx-0 ${
-              unitBannerClasses[unit.color] ?? "bg-brand-green"
+            className={`mx-4 mb-8 flex items-center gap-3 rounded-xl px-5 py-4 text-white shadow-md sm:mx-0 ${
+              unitBannerClasses[unit.color] ?? "bg-brand-teal"
             }`}
           >
-            <h2 className="text-lg font-extrabold">{unit.title}</h2>
-            <p className="text-sm opacity-90">{unit.description}</p>
+            <span className="rounded-md bg-black/15 px-2 py-1 font-mono text-xs font-bold tabular-nums">
+              {String(unitIndex + 1).padStart(2, "0")}
+            </span>
+            <div>
+              <h2 className="text-lg font-extrabold">{unit.title}</h2>
+              <p className="text-sm opacity-90">{unit.description}</p>
+            </div>
           </div>
 
           <div className="flex flex-col items-center gap-8">

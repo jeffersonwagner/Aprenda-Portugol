@@ -21,7 +21,7 @@ export default function LessonComplete({
         {[1, 2, 3].map((n) => (
           <span
             key={n}
-            className={n <= stars ? "text-brand-yellow" : "text-slate-200"}
+            className={n <= stars ? "text-brand-amber" : "text-slate-200"}
           >
             ★
           </span>
@@ -42,7 +42,7 @@ export default function LessonComplete({
           </p>
         </div>
         <div className="flex-1 rounded-xl bg-white p-4 shadow">
-          <p className="text-2xl font-black text-brand-green">
+          <p className="text-2xl font-black text-brand-teal">
             {Math.round((correctCount / total) * 100)}%
           </p>
           <p className="text-xs font-semibold uppercase tracking-wide text-slate-400">
@@ -54,8 +54,8 @@ export default function LessonComplete({
       <button
         type="button"
         onClick={onContinue}
-        style={accentShadow("#46a302")}
-        className="btn-3d w-full max-w-xs rounded-2xl bg-brand-green py-4 text-lg font-extrabold text-white"
+        style={accentShadow("#0f766e")}
+        className="btn-3d w-full max-w-xs rounded-2xl bg-brand-teal py-4 text-lg font-extrabold text-white"
       >
         Continuar
       </button>

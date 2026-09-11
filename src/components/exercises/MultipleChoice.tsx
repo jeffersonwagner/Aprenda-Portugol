@@ -29,14 +29,14 @@ export default function MultipleChoice({
             "border-slate-200 hover:border-slate-300 hover:bg-slate-50";
           if (submitted) {
             if (isCorrectOption) {
-              stateClasses = "border-brand-green bg-green-50 text-green-800";
+              stateClasses = "border-brand-teal bg-teal-50 text-teal-800";
             } else if (isSelected) {
-              stateClasses = "border-brand-red bg-red-50 text-red-800";
+              stateClasses = "border-brand-rose bg-rose-50 text-rose-800";
             } else {
               stateClasses = "border-slate-200 opacity-60";
             }
           } else if (isSelected) {
-            stateClasses = "border-brand-blue bg-sky-50";
+            stateClasses = "border-brand-indigo bg-indigo-50";
           }
 
           return (

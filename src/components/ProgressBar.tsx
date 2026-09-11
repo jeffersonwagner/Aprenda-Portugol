@@ -14,7 +14,7 @@ export default function ProgressBar({ value, max }: ProgressBarProps) {
       aria-valuemax={max}
     >
       <div
-        className="h-full rounded-full bg-brand-green transition-all duration-300"
+        className="h-full rounded-full bg-brand-teal transition-all duration-300"
         style={{ width: `${pct}%` }}
       />
     </div>

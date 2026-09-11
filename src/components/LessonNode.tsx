@@ -13,11 +13,11 @@ interface LessonNodeProps {
 }
 
 const colorClasses: Record<string, string> = {
-  "brand-green": "bg-brand-green",
-  "brand-blue": "bg-brand-blue",
-  "brand-yellow": "bg-brand-yellow",
-  "brand-red": "bg-brand-red",
-  "brand-purple": "bg-brand-purple",
+  "brand-teal": "bg-brand-teal",
+  "brand-indigo": "bg-brand-indigo",
+  "brand-amber": "bg-brand-amber",
+  "brand-rose": "bg-brand-rose",
+  "brand-violet": "bg-brand-violet",
 };
 
 export default function LessonNode({
@@ -45,10 +45,10 @@ export default function LessonNode({
             ? `${lesson.title} (bloqueada)`
             : `Abrir lição: ${lesson.title}`
         }
-        className={`btn-3d relative flex h-16 w-16 items-center justify-center rounded-full text-2xl shadow-md ${
+        className={`btn-3d relative flex h-16 w-16 items-center justify-center rounded-2xl text-2xl shadow-md ${
           isLocked
             ? "cursor-not-allowed bg-slate-300 text-slate-400"
-            : `${colorClasses[color] ?? "bg-brand-green"} text-white`
+            : `${colorClasses[color] ?? "bg-brand-teal"} text-white`
         }`}
         style={!isLocked ? accentShadow("rgba(0,0,0,0.2)") : undefined}
       >
@@ -64,7 +64,7 @@ export default function LessonNode({
           <span
             key={n}
             className={`text-xs ${
-              n <= stars ? "text-brand-yellow" : "text-slate-300"
+              n <= stars ? "text-brand-amber" : "text-slate-300"
             }`}
           >
             ★
