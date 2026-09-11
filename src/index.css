@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Nunito", system-ui, "Segoe UI", Roboto, sans-serif;
+  --font-mono: ui-monospace, "Fira Code", Consolas, monospace;
+
+  --color-brand-green: #58cc02;
+  --color-brand-green-dark: #46a302;
+  --color-brand-blue: #1cb0f6;
+  --color-brand-blue-dark: #1899d6;
+  --color-brand-yellow: #ffc800;
+  --color-brand-red: #ff4b4b;
+  --color-brand-purple: #ce82ff;
+}
+
+html {
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  background: #f7f7f7;
+}
+
+#root {
+  min-height: 100svh;
+}
+
+.btn-3d {
+  box-shadow: 0 4px 0 0 var(--shadow-color, #46a302);
+  transition: transform 0.05s ease, box-shadow 0.05s ease;
+}
+
+.btn-3d:active:not(:disabled) {
+  transform: translateY(4px);
+  box-shadow: 0 0 0 0 var(--shadow-color, #46a302);
+}
+
+.btn-3d:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
