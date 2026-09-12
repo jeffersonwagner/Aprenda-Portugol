@@ -46,3 +46,30 @@ body {
   opacity: 0.5;
   cursor: not-allowed;
 }
+
+.flip-scene {
+  perspective: 1400px;
+}
+
+.flip-card {
+  position: relative;
+  width: 100%;
+  height: 26rem;
+  transition: transform 0.5s ease;
+  transform-style: preserve-3d;
+}
+
+.flip-card.flipped {
+  transform: rotateY(180deg);
+}
+
+.flip-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  overflow-y: auto;
+}
+
+.flip-face-back {
+  transform: rotateY(180deg);
+}

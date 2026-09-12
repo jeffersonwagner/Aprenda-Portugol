@@ -31,6 +31,18 @@ escreve o programa do zero e ele é executado por um interpretador de
 Portugol Studio implementado neste projeto (`src/lib/portugol/`), com
 saída de console e mensagens de erro reais.
 
+## Praticar
+
+Além da trilha principal, a aba **Praticar** reúne modos de estudo livre,
+sem afetar XP/streak/corações da trilha:
+
+- **Flashcards** — 40 cards (fácil/médio/difícil) com enunciado, dica
+  opcional, solução comentada e explicação. Vire a carta, avalie se
+  acertou, acompanhe pontuação com bônus de sequência e veja quantos
+  cards você já domina — tudo persistido em `localStorage`, então seu
+  progresso sobrevive a um F5. Suporta teclado (espaço/enter vira, ← → 
+  navega, 1/2 marca acertei/errei, H mostra a dica).
+
 ## Rodando localmente
 
 ```bash
@@ -60,10 +72,10 @@ npm run preview  # serve o build de produção localmente
 
 ```
 src/
-  data/            conteúdo das unidades e lições (fonte da verdade do curso)
-  components/      trilha, nós de lição, barra de corações/progresso, exercícios
-  pages/           Home (trilha) e Lição (execução dos exercícios)
-  state/           contexto de progresso (XP, streak, corações, localStorage)
+  data/            conteúdo das unidades/lições e dos flashcards
+  components/      trilha, nós de lição, tab bar, barra de corações/progresso, exercícios
+  pages/           Home (trilha), Praticar (hub), Flashcards e Lição
+  state/           progresso da trilha e dos flashcards (XP, streak, localStorage)
   lib/             lógica de correção de exercícios e utilidades
   lib/portugol/    interpretador de Portugol Studio (lexer, parser, avaliador),
                    usado para rodar e corrigir os desafios de código aberto
@@ -93,6 +105,11 @@ exemplo:
 > UNIVALI — Laboratório de Inovação Tecnológica na Educação (LITE).
 > **Portugol Studio**. Itajaí: UNIVALI. Disponível em:
 > <https://univali-lite.github.io/Portugol-Studio/>.
+
+Os 40 flashcards da aba Praticar têm origem no projeto
+[Portugol Flash Cards](https://github.com/jeffersonwagner/portugol-flash-cards),
+do mesmo autor deste repositório, com conteúdo revisado e integrado à
+interface e ao sistema de progresso deste app.
 
 ## Possíveis próximos passos
 

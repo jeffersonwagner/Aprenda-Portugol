@@ -78,3 +78,24 @@ export interface ProgressState {
   lastActiveDate: string | null;
   lessonProgress: Record<string, LessonProgress>;
 }
+
+export type FlashcardLevel = "facil" | "medio" | "dificil";
+
+export interface Flashcard {
+  id: string;
+  level: FlashcardLevel;
+  question: string;
+  content: string;
+  hint?: string;
+  answer: string;
+  solution: string;
+  explanation?: string;
+  points: number;
+}
+
+export type FlashcardResult = "correct" | "wrong";
+
+export interface FlashcardsState {
+  results: Record<string, FlashcardResult>;
+  totalScore: number;
+}
