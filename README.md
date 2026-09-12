@@ -12,7 +12,7 @@ e executado nessas ferramentas.
 
 ## Conteúdo
 
-6 unidades, 12 lições, 60 exercícios cobrindo:
+9 unidades, 17 lições, 85 exercícios cobrindo:
 
 1. **Primeiros Passos** — estrutura `programa { funcao inicio() { ... } }`, comentários
 2. **Entrada e Saída** — variáveis, tipos (`inteiro`, `real`, `cadeia`, `caracter`, `logico`), `leia`/`escreva`
@@ -20,6 +20,9 @@ e executado nessas ferramentas.
 4. **Repetições** — `para (inteiro i = 1; i <= n; i++)`, `enquanto`, `faca...enquanto`
 5. **Vetores** — declaração (`tipo nome[tamanho]`) e percorrimento — índices começam em **0**
 6. **Funções** — `funcao tipo nome(...)` com `retorne`; funções sem tipo de retorno (o equivalente a "procedimento" em outros dialetos)
+7. **Operadores Aritméticos** — precedência de `* / %` sobre `+ -`, parênteses, divisão inteira e módulo
+8. **Escolha e Caso** — `escolha (...) { caso valor: ... pare ... caso contrario: ... }`
+9. **Matrizes** — vetores bidimensionais (`tipo nome[linhas][colunas]`), laços aninhados e passagem por referência (`&`)
 
 Cada lição mistura três tipos de exercício: múltipla escolha, completar
 código (fill-in-the-blank) e ordenar blocos de código.
@@ -60,10 +63,35 @@ src/
   lib/          lógica de correção de exercícios e utilidades
 ```
 
+## Créditos e referências
+
+Este é um projeto de estudo independente, sem vínculo oficial com a
+UNIVALI. A sintaxe usada em todos os exercícios foi cuidadosamente
+alinhada com o **Portugol Studio**, ambiente de programação didática
+desenvolvido pelo Laboratório de Inovação Tecnológica na Educação (LITE)
+da Universidade do Vale do Itajaí (UNIVALI) — a mesma linguagem/compilador
+usado pelo Portugol Web Studio. Cada trecho de código deste app foi
+conferido contra exemplos reais do repositório oficial do projeto, para
+não introduzir sintaxe inventada:
+
+- Portugol Studio: <https://github.com/UNIVALI-LITE/Portugol-Studio>
+- Site oficial: <https://univali-lite.github.io/Portugol-Studio/>
+- Exemplos de referência consultados: <https://github.com/UNIVALI-LITE-BACKUP/Portugol-Studio-Recursos>
+  (exemplos originais de autoria de Giordana Maria da Costa Valle e Carlos
+  Alexandre Krueger, UNIVALI, 2013)
+
+Se você for citar este material em um trabalho acadêmico, a referência
+correta para a ferramenta/linguagem é o próprio Portugol Studio, por
+exemplo:
+
+> UNIVALI — Laboratório de Inovação Tecnológica na Educação (LITE).
+> **Portugol Studio**. Itajaí: UNIVALI. Disponível em:
+> <https://univali-lite.github.io/Portugol-Studio/>.
+
 ## Possíveis próximos passos
 
-- Editor de código embutido para exercícios "escreva o algoritmo do zero"
-- Mais unidades (matrizes, registros/`tipo`, recursão)
+- Editor de código embutido para exercícios "escreva o programa do zero"
+- Mais unidades (registros/`tipo`, recursão, biblioteca de texto/cadeia)
 - Sistema de conquistas/badges
 - Sincronizar progresso com uma conta (backend)
 - Efeitos sonoros e animações de acerto/erro

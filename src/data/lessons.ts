@@ -716,6 +716,309 @@ export const lessons: Lesson[] = [
       },
     ],
   },
+
+  // ─────────────────── Unidade 7: Operadores Aritméticos ───────────────────
+  {
+    id: "ar-1",
+    unitId: "operadores-aritmeticos",
+    title: "Operadores e Precedência",
+    description: "+ - * / % e a ordem das operações",
+    icon: "➗",
+    exercises: [
+      {
+        id: "ar-1-1",
+        type: "multiple-choice",
+        prompt: "Qual é o resultado de '5 + 4 * 2' em Portugol?",
+        options: ["18", "13", "9", "20"],
+        correctIndex: 1,
+        explanation:
+          "A multiplicação é feita primeiro: 4 * 2 = 8, depois 5 + 8 = 13.",
+      },
+      {
+        id: "ar-1-2",
+        type: "multiple-choice",
+        prompt: "Qual é o resultado de '(5 + 4) * 2'?",
+        options: ["13", "18", "9", "20"],
+        correctIndex: 1,
+        explanation:
+          "Os parênteses forçam a soma a acontecer primeiro: 5 + 4 = 9, depois 9 * 2 = 18.",
+      },
+      {
+        id: "ar-1-3",
+        type: "multiple-choice",
+        prompt:
+          "Qual grupo de operadores tem prioridade sobre soma (+) e subtração (-) em Portugol?",
+        options: [
+          "Nenhum — todos têm a mesma prioridade",
+          "Multiplicação (*), divisão (/) e módulo (%)",
+          "Apenas a multiplicação",
+          "Apenas os parênteses",
+        ],
+        correctIndex: 1,
+      },
+      {
+        id: "ar-1-4",
+        type: "fill-blank",
+        prompt: "Complete para calcular o resto da divisão de 10 por 3.",
+        code: "inteiro resto\nresto = 10 ___ 3",
+        options: ["%", "/", "*", "div"],
+        correctAnswer: "%",
+        explanation: "O símbolo % é o operador de módulo (resto da divisão).",
+      },
+      {
+        id: "ar-1-5",
+        type: "multiple-choice",
+        prompt: "Qual é o resultado de '10 % 3'?",
+        options: ["3", "1", "0", "10"],
+        correctIndex: 1,
+        explanation: "10 dividido por 3 dá 3 com resto 1.",
+      },
+    ],
+  },
+  {
+    id: "ar-2",
+    unitId: "operadores-aritmeticos",
+    title: "Divisão Inteira e Módulo",
+    description: "O que acontece ao dividir dois inteiros",
+    icon: "🧮",
+    exercises: [
+      {
+        id: "ar-2-1",
+        type: "multiple-choice",
+        prompt:
+          "Se 'valor' é do tipo inteiro, o que faz o comando 'valor / 2'?",
+        options: [
+          "Sempre retorna um número real, com casas decimais",
+          "Retorna a divisão inteira, descartando as casas decimais",
+          "Dá erro de compilação",
+          "Retorna o resto da divisão",
+        ],
+        correctIndex: 1,
+        explanation:
+          "Entre dois valores inteiro, o operador / faz divisão inteira automaticamente.",
+      },
+      {
+        id: "ar-2-2",
+        type: "fill-blank",
+        prompt: "Complete para calcular a metade inteira do valor.",
+        code: "inteiro metade, valor = 7\nmetade = valor ___ 2\nescreva(metade)",
+        options: ["/", "%", "*", "div"],
+        correctAnswer: "/",
+      },
+      {
+        id: "ar-2-3",
+        type: "multiple-choice",
+        prompt:
+          "Qual é a saída deste trecho?\n\ninteiro valor = 7\nescreva(valor / 2)",
+        options: ["3", "3.5", "4", "0"],
+        correctIndex: 0,
+      },
+      {
+        id: "ar-2-4",
+        type: "multiple-choice",
+        prompt:
+          "Qual operador retorna o RESTO de uma divisão entre dois números inteiros?",
+        options: ["/", "%", "//", "resto"],
+        correctIndex: 1,
+      },
+      {
+        id: "ar-2-5",
+        type: "order-blocks",
+        prompt: "Ordene o trecho que calcula e exibe o resto de 17 por 5.",
+        blocks: ["inteiro resto", "resto = 17 % 5", "escreva(resto)"],
+      },
+    ],
+  },
+
+  // ─────────────────── Unidade 8: Escolha e Caso ───────────────────
+  {
+    id: "esc-1",
+    unitId: "escolha-caso",
+    title: "Escolha (switch)",
+    description: "Testando vários valores possíveis de uma variável",
+    icon: "🎯",
+    exercises: [
+      {
+        id: "esc-1-1",
+        type: "multiple-choice",
+        prompt:
+          "Qual comando permite testar vários valores possíveis de uma mesma variável, como alternativa a vários 'se/senao'?",
+        options: ["repita", "escolha", "funcao", "vetor"],
+        correctIndex: 1,
+      },
+      {
+        id: "esc-1-2",
+        type: "fill-blank",
+        prompt: "Complete para encerrar o caso e evitar que ele continue para o próximo.",
+        code: 'escolha (opcao)\n{\n  caso 1:\n    escreva("Primeira opção")\n  ___\n\n  caso contrario:\n    escreva("Opção inválida")\n}',
+        options: ["pare", "fimcaso", "break;", "fimse"],
+        correctAnswer: "pare",
+        explanation:
+          "'pare' encerra o caso atual, evitando que a execução continue para o próximo 'caso'.",
+      },
+      {
+        id: "esc-1-3",
+        type: "multiple-choice",
+        prompt:
+          'Qual é a saída deste trecho?\n\ninteiro dia = 3\nescolha (dia)\n{\n  caso 1:\n    escreva("Segunda")\n  pare\n\n  caso 2:\n    escreva("Terça")\n  pare\n\n  caso 3:\n    escreva("Quarta")\n  pare\n\n  caso contrario:\n    escreva("Dia inválido")\n}',
+        options: ["Quarta", "Terça", "Dia inválido", "3"],
+        correctIndex: 0,
+      },
+      {
+        id: "esc-1-4",
+        type: "order-blocks",
+        prompt: "Ordene o trecho que trata a nota 10 em uma estrutura 'escolha'.",
+        blocks: [
+          "escolha (nota)",
+          "{",
+          "caso 10:",
+          'escreva("Perfeito!")',
+          "pare",
+          "}",
+        ],
+      },
+      {
+        id: "esc-1-5",
+        type: "multiple-choice",
+        prompt: "O que o 'caso contrario' representa dentro de uma estrutura 'escolha'?",
+        options: [
+          "O primeiro caso testado",
+          "Um erro de sintaxe",
+          "O bloco executado quando nenhum outro 'caso' corresponde ao valor",
+          "Uma repetição infinita",
+        ],
+        correctIndex: 2,
+      },
+    ],
+  },
+
+  // ─────────────────── Unidade 9: Matrizes ───────────────────
+  {
+    id: "mat-1",
+    unitId: "matrizes",
+    title: "Declarando Matrizes",
+    description: "Vetores de duas dimensões (linhas e colunas)",
+    icon: "🗂️",
+    exercises: [
+      {
+        id: "mat-1-1",
+        type: "multiple-choice",
+        prompt:
+          "Como se declara uma matriz de 3 linhas por 4 colunas de números inteiros?",
+        options: [
+          "inteiro m[3, 4]",
+          "inteiro m[3][4]",
+          "matriz inteiro m(3,4)",
+          "inteiro m[3..4]",
+        ],
+        correctIndex: 1,
+        explanation:
+          "Uma matriz é declarada com dois pares de colchetes: [linhas][colunas].",
+      },
+      {
+        id: "mat-1-2",
+        type: "multiple-choice",
+        prompt: "Como acessamos o elemento da linha 2 e coluna 1 de uma matriz 'm'?",
+        options: ["m[2, 1]", "m(2)(1)", "m[2][1]", "m.get(2,1)"],
+        correctIndex: 2,
+      },
+      {
+        id: "mat-1-3",
+        type: "fill-blank",
+        prompt: "Complete a declaração de uma matriz TAMANHO x TAMANHO.",
+        code: "const inteiro TAMANHO = 5\ncaracter matriz___",
+        options: ["[TAMANHO][TAMANHO]", "[TAMANHO, TAMANHO]", "(TAMANHO, TAMANHO)", "[TAMANHO x TAMANHO]"],
+        correctAnswer: "[TAMANHO][TAMANHO]",
+      },
+      {
+        id: "mat-1-4",
+        type: "multiple-choice",
+        prompt:
+          "Em Portugol Studio, como se escreve um valor literal do tipo 'caracter' (um único caractere)?",
+        options: [
+          'Entre aspas duplas, como "a"',
+          "Entre aspas simples, como 'a'",
+          "Sem nenhuma marcação, como a",
+          "Entre colchetes, como [a]",
+        ],
+        correctIndex: 1,
+        explanation:
+          "Aspas duplas são usadas para 'cadeia' (texto); aspas simples são usadas para um único 'caracter'.",
+      },
+      {
+        id: "mat-1-5",
+        type: "order-blocks",
+        prompt: "Ordene a declaração de uma matriz de caracteres TAMANHO x TAMANHO.",
+        blocks: ["const inteiro TAMANHO = 5", "caracter matriz[TAMANHO][TAMANHO]"],
+      },
+    ],
+  },
+  {
+    id: "mat-2",
+    unitId: "matrizes",
+    title: "Percorrendo Matrizes",
+    description: "Laços aninhados e passagem por referência",
+    icon: "🔲",
+    exercises: [
+      {
+        id: "mat-2-1",
+        type: "multiple-choice",
+        prompt:
+          "Qual é a saída deste trecho?\n\ninteiro m[2][2]\nm[0][0] = 1\nm[0][1] = 2\nm[1][0] = 3\nm[1][1] = 4\nescreva(m[1][0])",
+        options: ["3", "1", "2", "4"],
+        correctIndex: 0,
+      },
+      {
+        id: "mat-2-2",
+        type: "order-blocks",
+        prompt: "Ordene os laços aninhados que percorrem todas as posições de m.",
+        blocks: [
+          "para (inteiro linha = 0; linha < 3; linha++)",
+          "{",
+          "para (inteiro coluna = 0; coluna < 3; coluna++)",
+          "{",
+          "escreva(m[linha][coluna])",
+          "}",
+          "}",
+        ],
+      },
+      {
+        id: "mat-2-3",
+        type: "multiple-choice",
+        prompt: "Para percorrer todas as posições de uma matriz, geralmente usamos:",
+        options: [
+          "Um único laço 'para'",
+          "Dois laços 'para' aninhados (um para linha, um para coluna)",
+          "Um laço 'enquanto' apenas",
+          "Não é possível percorrer uma matriz",
+        ],
+        correctIndex: 1,
+      },
+      {
+        id: "mat-2-4",
+        type: "fill-blank",
+        prompt: "Complete a atribuição dentro da função.",
+        code: "funcao preenche(inteiro &matriz[][])\n{\n  matriz[0][0] ___ 100\n}",
+        options: ["=", "<-", "==", ":"],
+        correctAnswer: "=",
+      },
+      {
+        id: "mat-2-5",
+        type: "multiple-choice",
+        prompt:
+          "Ao declarar um parâmetro de função como 'inteiro &matriz[][]', o que significa o símbolo '&' antes do nome?",
+        options: [
+          "É apenas um comentário",
+          "Indica que a matriz é passada por referência (alterações dentro da função afetam a matriz original)",
+          "Indica que a matriz é somente leitura",
+          "É obrigatório em toda função",
+        ],
+        correctIndex: 1,
+        explanation:
+          "Sem o '&', a função receberia uma cópia da matriz e as alterações não seriam refletidas fora dela.",
+      },
+    ],
+  },
 ];
 
 export function getLessonById(id: string): Lesson | undefined {

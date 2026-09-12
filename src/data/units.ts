@@ -37,4 +37,22 @@ export const units: Unit[] = [
     description: "Organizando e reaproveitando código",
     color: "brand-teal",
   },
+  {
+    id: "operadores-aritmeticos",
+    title: "Operadores Aritméticos",
+    description: "Precedência, divisão inteira e módulo",
+    color: "brand-indigo",
+  },
+  {
+    id: "escolha-caso",
+    title: "Escolha e Caso",
+    description: "Testando vários valores possíveis",
+    color: "brand-amber",
+  },
+  {
+    id: "matrizes",
+    title: "Matrizes",
+    description: "Vetores bidimensionais",
+    color: "brand-rose",
+  },
 ];
