@@ -136,6 +136,26 @@ export const lessons: Lesson[] = [
     ],
   },
 
+  {
+    id: "pp-3",
+    unitId: "primeiros-passos",
+    title: "Desafio de Código",
+    description: "Escreva seu primeiro programa do zero",
+    icon: "⌨️",
+    exercises: [
+      {
+        id: "pp-3-1",
+        type: "code",
+        prompt:
+          'Complete a função inicio() para exibir a mensagem "Aprendendo Portugol!" na tela.',
+        starterCode:
+          'programa\n{\n  funcao inicio()\n  {\n    // Escreva aqui o comando que exibe "Aprendendo Portugol!"\n\n  }\n}',
+        expectedOutput: "Aprendendo Portugol!",
+        hint: 'Use escreva("Aprendendo Portugol!") dentro da função inicio().',
+      },
+    ],
+  },
+
   // ───────────────────────── Unidade 2: Entrada e Saída ─────────────────────────
   {
     id: "es-1",
@@ -236,6 +256,26 @@ export const lessons: Lesson[] = [
           "leia(idade)",
           'escreva("Sua idade é: ", idade)',
         ],
+      },
+    ],
+  },
+
+  {
+    id: "es-3",
+    unitId: "entrada-saida",
+    title: "Desafio de Código",
+    description: "Leia um dado e exiba uma saudação",
+    icon: "⌨️",
+    exercises: [
+      {
+        id: "es-3-1",
+        type: "code",
+        prompt: "Leia o nome digitado pelo usuário e exiba \"Olá, \" seguido do nome.",
+        starterCode:
+          "programa\n{\n  funcao inicio()\n  {\n    cadeia nome\n\n    // Leia o nome digitado e exiba a saudação\n\n  }\n}",
+        inputs: ["Maria"],
+        expectedOutput: "Olá, Maria",
+        hint: 'Use leia(nome) e depois escreva("Olá, ", nome).',
       },
     ],
   },
@@ -355,6 +395,27 @@ export const lessons: Lesson[] = [
         correctIndex: 1,
         explanation:
           "Cuidado para não confundir: '=' atribui um valor, '==' compara dois valores.",
+      },
+    ],
+  },
+
+  {
+    id: "dec-3",
+    unitId: "decisoes",
+    title: "Desafio de Código",
+    description: "Escreva uma decisão condicional do zero",
+    icon: "⌨️",
+    exercises: [
+      {
+        id: "dec-3-1",
+        type: "code",
+        prompt:
+          "Leia a idade e exiba \"Maior de idade\" se for >= 18, ou \"Menor de idade\" caso contrário.",
+        starterCode:
+          "programa\n{\n  funcao inicio()\n  {\n    inteiro idade\n    leia(idade)\n\n    // Complete a estrutura se/senao\n\n  }\n}",
+        inputs: ["20"],
+        expectedOutput: "Maior de idade",
+        hint: 'Use se (idade >= 18) { escreva("Maior de idade") } senao { escreva("Menor de idade") }.',
       },
     ],
   },
@@ -483,6 +544,26 @@ export const lessons: Lesson[] = [
     ],
   },
 
+  {
+    id: "rep-3",
+    unitId: "repeticoes",
+    title: "Desafio de Código",
+    description: "Escreva um laço do zero",
+    icon: "⌨️",
+    exercises: [
+      {
+        id: "rep-3-1",
+        type: "code",
+        prompt:
+          "Exiba os números de 1 a 5, cada um seguido de um espaço, usando um laço 'para'.",
+        starterCode:
+          "programa\n{\n  funcao inicio()\n  {\n    // Escreva o laço que exibe 1 2 3 4 5\n\n  }\n}",
+        expectedOutput: "1 2 3 4 5",
+        hint: 'para (inteiro i = 1; i <= 5; i++) { escreva(i, " ") }',
+      },
+    ],
+  },
+
   // ───────────────────────── Unidade 5: Vetores ─────────────────────────
   {
     id: "vet-1",
@@ -592,6 +673,25 @@ export const lessons: Lesson[] = [
           "Nada acontece",
         ],
         correctIndex: 1,
+      },
+    ],
+  },
+
+  {
+    id: "vet-3",
+    unitId: "vetores",
+    title: "Desafio de Código",
+    description: "Percorra um vetor do zero",
+    icon: "⌨️",
+    exercises: [
+      {
+        id: "vet-3-1",
+        type: "code",
+        prompt: "Preencha o vetor com os números 10, 20 e 30 e depois exiba a soma deles.",
+        starterCode:
+          "programa\n{\n  funcao inicio()\n  {\n    inteiro numeros[3]\n    inteiro soma = 0\n\n    numeros[0] = 10\n    numeros[1] = 20\n    numeros[2] = 30\n\n    // Percorra o vetor somando os valores em soma e exiba o resultado\n\n  }\n}",
+        expectedOutput: "60",
+        hint: "Use um laço 'para' de 0 até 2 somando numeros[i] em soma, e depois escreva(soma).",
       },
     ],
   },
@@ -717,6 +817,25 @@ export const lessons: Lesson[] = [
     ],
   },
 
+  {
+    id: "fun-3",
+    unitId: "funcoes",
+    title: "Desafio de Código",
+    description: "Complete uma função do zero",
+    icon: "⌨️",
+    exercises: [
+      {
+        id: "fun-3-1",
+        type: "code",
+        prompt: "Complete a função 'dobro' para retornar o dobro do número recebido.",
+        starterCode:
+          "programa\n{\n  funcao inteiro dobro(inteiro x)\n  {\n    // Complete o retorno\n\n  }\n\n  funcao inicio()\n  {\n    escreva(dobro(21))\n  }\n}",
+        expectedOutput: "42",
+        hint: "retorne x * 2",
+      },
+    ],
+  },
+
   // ─────────────────── Unidade 7: Operadores Aritméticos ───────────────────
   {
     id: "ar-1",
@@ -830,6 +949,26 @@ export const lessons: Lesson[] = [
     ],
   },
 
+  {
+    id: "ar-3",
+    unitId: "operadores-aritmeticos",
+    title: "Desafio de Código",
+    description: "Calcule um resto de divisão do zero",
+    icon: "⌨️",
+    exercises: [
+      {
+        id: "ar-3-1",
+        type: "code",
+        prompt: "Leia dois números inteiros e exiba o resto da divisão do primeiro pelo segundo.",
+        starterCode:
+          "programa\n{\n  funcao inicio()\n  {\n    inteiro a, b\n    leia(a)\n    leia(b)\n\n    // Exiba o resto da divisão de a por b\n\n  }\n}",
+        inputs: ["17", "5"],
+        expectedOutput: "2",
+        hint: "Use o operador %: escreva(a % b)",
+      },
+    ],
+  },
+
   // ─────────────────── Unidade 8: Escolha e Caso ───────────────────
   {
     id: "esc-1",
@@ -888,6 +1027,27 @@ export const lessons: Lesson[] = [
           "Uma repetição infinita",
         ],
         correctIndex: 2,
+      },
+    ],
+  },
+
+  {
+    id: "esc-2",
+    unitId: "escolha-caso",
+    title: "Desafio de Código",
+    description: "Escreva uma estrutura escolha do zero",
+    icon: "⌨️",
+    exercises: [
+      {
+        id: "esc-2-1",
+        type: "code",
+        prompt:
+          "Leia um número de 1 a 3 e exiba o nome do lugar no pódio (1=Ouro, 2=Prata, 3=Bronze) usando 'escolha'.",
+        starterCode:
+          "programa\n{\n  funcao inicio()\n  {\n    inteiro posicao\n    leia(posicao)\n\n    // Complete a estrutura escolha\n\n  }\n}",
+        inputs: ["2"],
+        expectedOutput: "Prata",
+        hint: 'Use escolha (posicao) { caso 1: escreva("Ouro") pare caso 2: escreva("Prata") pare caso 3: escreva("Bronze") pare }',
       },
     ],
   },
@@ -1016,6 +1176,25 @@ export const lessons: Lesson[] = [
         correctIndex: 1,
         explanation:
           "Sem o '&', a função receberia uma cópia da matriz e as alterações não seriam refletidas fora dela.",
+      },
+    ],
+  },
+  {
+    id: "mat-3",
+    unitId: "matrizes",
+    title: "Desafio de Código",
+    description: "Escreva uma matriz do zero",
+    icon: "⌨️",
+    exercises: [
+      {
+        id: "mat-3-1",
+        type: "code",
+        prompt:
+          "Preencha a matriz 2x2 com os valores 1, 2, 3 e 4 (linha por linha) e exiba a soma dos elementos da diagonal principal (m[0][0] + m[1][1]).",
+        starterCode:
+          "programa\n{\n  funcao inicio()\n  {\n    inteiro m[2][2]\n\n    m[0][0] = 1\n    m[0][1] = 2\n    m[1][0] = 3\n    m[1][1] = 4\n\n    // Exiba a soma da diagonal principal\n\n  }\n}",
+        expectedOutput: "5",
+        hint: "escreva(m[0][0] + m[1][1])",
       },
     ],
   },

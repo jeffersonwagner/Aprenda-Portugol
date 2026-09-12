@@ -1,4 +1,8 @@
-export type ExerciseType = "multiple-choice" | "fill-blank" | "order-blocks";
+export type ExerciseType =
+  | "multiple-choice"
+  | "fill-blank"
+  | "order-blocks"
+  | "code";
 
 export interface BaseExercise {
   id: string;
@@ -28,10 +32,23 @@ export interface OrderBlocksExercise extends BaseExercise {
   blocks: string[];
 }
 
+export interface CodeExercise extends BaseExercise {
+  type: "code";
+  /** Skeleton code pre-filled in the editor, with a comment marking where to write. */
+  starterCode: string;
+  /** Values fed to `leia(...)` calls in order, as raw strings. */
+  inputs?: string[];
+  /** Expected console output, compared with whitespace-per-line trimmed. */
+  expectedOutput: string;
+  /** Shown as a hint after a wrong attempt. */
+  hint?: string;
+}
+
 export type Exercise =
   | MultipleChoiceExercise
   | FillBlankExercise
-  | OrderBlocksExercise;
+  | OrderBlocksExercise
+  | CodeExercise;
 
 export interface Lesson {
   id: string;

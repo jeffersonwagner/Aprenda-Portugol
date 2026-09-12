@@ -1,3 +1,4 @@
+import { execute, normalizeOutput } from "./portugol";
 import type { Exercise } from "../types";
 
 export type Answer = number | string | string[] | null;
@@ -10,6 +11,8 @@ export function isAnswerComplete(exercise: Exercise, answer: Answer): boolean {
       return typeof answer === "string" && answer.length > 0;
     case "order-blocks":
       return Array.isArray(answer) && answer.length === exercise.blocks.length;
+    case "code":
+      return typeof answer === "string" && answer.trim().length > 0;
   }
 }
 
@@ -25,6 +28,14 @@ export function checkAnswer(exercise: Exercise, answer: Answer): boolean {
         answer.length === exercise.blocks.length &&
         answer.every((line, i) => line === exercise.blocks[i])
       );
+    case "code": {
+      if (typeof answer !== "string") return false;
+      const result = execute(answer, exercise.inputs ?? []);
+      return (
+        result.error === null &&
+        normalizeOutput(result.output) === normalizeOutput(exercise.expectedOutput)
+      );
+    }
   }
 }
 

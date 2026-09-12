@@ -4,11 +4,13 @@ import HeartsBar from "../components/HeartsBar";
 import LessonComplete from "../components/LessonComplete";
 import LessonFailed from "../components/LessonFailed";
 import ProgressBar from "../components/ProgressBar";
+import CodeEditor from "../components/exercises/CodeEditor";
 import FillBlank from "../components/exercises/FillBlank";
 import MultipleChoice from "../components/exercises/MultipleChoice";
 import OrderBlocks from "../components/exercises/OrderBlocks";
 import { getLessonById } from "../data/lessons";
 import { checkAnswer, isAnswerComplete, type Answer } from "../lib/exercise";
+import type { Exercise } from "../types";
 import { accentShadow } from "../lib/style";
 import { useProgress, type LessonResultOutput } from "../state/progress";
 
@@ -33,9 +35,13 @@ export default function LessonPage() {
   const [phase, setPhase] = useState<Phase>("playing");
   const [result, setResult] = useState<LessonResultOutput | null>(null);
 
+  function initialAnswerFor(ex: Exercise | undefined): Answer {
+    return ex?.type === "code" ? ex.starterCode : null;
+  }
+
   function resetAttempt() {
     setCurrentIndex(0);
-    setAnswer(null);
+    setAnswer(initialAnswerFor(lesson?.exercises[0]));
     setSubmitted(false);
     setLastCorrect(false);
     setHearts(MAX_HEARTS);
@@ -85,8 +91,8 @@ export default function LessonPage() {
       setPhase("complete");
       return;
     }
-    setCurrentIndex((i) => i + 1);
-    setAnswer(null);
+    setCurrentIndex(currentIndex + 1);
+    setAnswer(initialAnswerFor(lesson!.exercises[currentIndex + 1]));
     setSubmitted(false);
     setLastCorrect(false);
   }
@@ -147,6 +153,15 @@ export default function LessonPage() {
           <OrderBlocks
             key={exercise.id}
             exercise={exercise}
+            submitted={submitted}
+            onChange={setAnswer}
+          />
+        )}
+        {exercise.type === "code" && (
+          <CodeEditor
+            key={exercise.id}
+            exercise={exercise}
+            answer={typeof answer === "string" ? answer : null}
             submitted={submitted}
             onChange={setAnswer}
           />

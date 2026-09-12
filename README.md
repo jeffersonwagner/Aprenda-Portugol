@@ -12,7 +12,7 @@ e executado nessas ferramentas.
 
 ## Conteúdo
 
-9 unidades, 17 lições, 85 exercícios cobrindo:
+9 unidades, 26 lições, 94 exercícios cobrindo:
 
 1. **Primeiros Passos** — estrutura `programa { funcao inicio() { ... } }`, comentários
 2. **Entrada e Saída** — variáveis, tipos (`inteiro`, `real`, `cadeia`, `caracter`, `logico`), `leia`/`escreva`
@@ -24,8 +24,12 @@ e executado nessas ferramentas.
 8. **Escolha e Caso** — `escolha (...) { caso valor: ... pare ... caso contrario: ... }`
 9. **Matrizes** — vetores bidimensionais (`tipo nome[linhas][colunas]`), laços aninhados e passagem por referência (`&`)
 
-Cada lição mistura três tipos de exercício: múltipla escolha, completar
-código (fill-in-the-blank) e ordenar blocos de código.
+Cada lição mistura quatro tipos de exercício: múltipla escolha, completar
+código (fill-in-the-blank), ordenar blocos de código e um **desafio de
+código aberto** ao final de cada unidade — um editor de verdade onde você
+escreve o programa do zero e ele é executado por um interpretador de
+Portugol Studio implementado neste projeto (`src/lib/portugol/`), com
+saída de console e mensagens de erro reais.
 
 ## Rodando localmente
 
@@ -56,11 +60,13 @@ npm run preview  # serve o build de produção localmente
 
 ```
 src/
-  data/         conteúdo das unidades e lições (fonte da verdade do curso)
-  components/   trilha, nós de lição, barra de corações/progresso, exercícios
-  pages/        Home (trilha) e Lição (execução dos exercícios)
-  state/        contexto de progresso (XP, streak, corações, localStorage)
-  lib/          lógica de correção de exercícios e utilidades
+  data/            conteúdo das unidades e lições (fonte da verdade do curso)
+  components/      trilha, nós de lição, barra de corações/progresso, exercícios
+  pages/           Home (trilha) e Lição (execução dos exercícios)
+  state/           contexto de progresso (XP, streak, corações, localStorage)
+  lib/             lógica de correção de exercícios e utilidades
+  lib/portugol/    interpretador de Portugol Studio (lexer, parser, avaliador),
+                   usado para rodar e corrigir os desafios de código aberto
 ```
 
 ## Créditos e referências
@@ -90,7 +96,7 @@ exemplo:
 
 ## Possíveis próximos passos
 
-- Editor de código embutido para exercícios "escreva o programa do zero"
+- Suporte a mais bibliotecas do Portugol Studio no interpretador (`Util`, `Texto`, `Matematica`)
 - Mais unidades (registros/`tipo`, recursão, biblioteca de texto/cadeia)
 - Sistema de conquistas/badges
 - Sincronizar progresso com uma conta (backend)
