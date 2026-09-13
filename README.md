@@ -43,6 +43,30 @@ sem afetar XP/streak/corações da trilha:
   progresso sobrevive a um F5. Suporta teclado (espaço/enter vira, ← → 
   navega, 1/2 marca acertei/errei, H mostra a dica).
 
+## Conta e progresso na nuvem
+
+Sem nenhuma configuração, o app já funciona completo em **modo visitante**:
+todo o progresso (trilha e flashcards) fica salvo em `localStorage`, só
+neste navegador. Se você quiser criar uma conta para acessar seu progresso
+de qualquer aparelho, o app usa [Supabase](https://supabase.com) (Postgres +
+autenticação) como backend — não existe um servidor próprio deste projeto.
+
+Para habilitar:
+
+1. Crie um projeto gratuito em [supabase.com](https://supabase.com).
+2. No **SQL Editor** do painel, rode o conteúdo de `supabase/schema.sql`
+   deste repositório — cria as tabelas de progresso e as políticas de RLS
+   (cada usuário só acessa os próprios dados).
+3. Em **Project Settings → API**, copie a **Project URL** e a chave
+   **anon public** (ou **publishable**, nos projetos mais novos).
+4. Copie `.env.example` para `.env.local` e cole os dois valores.
+
+Sem essas variáveis, a tela de conta simplesmente avisa que a
+sincronização não está configurada e o app segue em modo visitante — nada
+quebra. Ao logar pela primeira vez, o progresso local é mesclado com o
+que já existir na nuvem (nunca sobrescreve, só soma/mantém o melhor de
+cada lado).
+
 ## Rodando localmente
 
 ```bash
@@ -65,8 +89,8 @@ npm run preview  # serve o build de produção localmente
 - React + TypeScript + Vite
 - Tailwind CSS v4
 - React Router
-- Progresso (XP, sequência, lições concluídas) persistido em `localStorage` —
-  não há backend nesta primeira versão.
+- Supabase (Postgres + Auth) para conta e sincronização de progresso na
+  nuvem — opcional; sem configurar, tudo funciona só com `localStorage`.
 
 ## Estrutura
 
@@ -74,11 +98,13 @@ npm run preview  # serve o build de produção localmente
 src/
   data/            conteúdo das unidades/lições e dos flashcards
   components/      trilha, nós de lição, tab bar, barra de corações/progresso, exercícios
-  pages/           Home (trilha), Praticar (hub), Flashcards e Lição
-  state/           progresso da trilha e dos flashcards (XP, streak, localStorage)
-  lib/             lógica de correção de exercícios e utilidades
+  pages/           Home (trilha), Praticar (hub), Flashcards, Lição e Conta
+  state/           auth, progresso da trilha e dos flashcards (localStorage + Supabase)
+  lib/             cliente Supabase, sincronização de progresso, correção de exercícios
   lib/portugol/    interpretador de Portugol Studio (lexer, parser, avaliador),
                    usado para rodar e corrigir os desafios de código aberto
+supabase/
+  schema.sql       tabelas de progresso + políticas de RLS (rode no SQL Editor do Supabase)
 ```
 
 ## Créditos e referências
@@ -116,5 +142,7 @@ interface e ao sistema de progresso deste app.
 - Suporte a mais bibliotecas do Portugol Studio no interpretador (`Util`, `Texto`, `Matematica`)
 - Mais unidades (registros/`tipo`, recursão, biblioteca de texto/cadeia)
 - Sistema de conquistas/badges
-- Sincronizar progresso com uma conta (backend)
+- Login social (Google) além de e-mail/senha
+- Indicador de status de sincronização (hoje ela é "melhor esforço" e silenciosa)
 - Efeitos sonoros e animações de acerto/erro
+- Deploy público

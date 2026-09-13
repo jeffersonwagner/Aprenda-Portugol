@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import AppShell from "./components/AppShell";
+import Account from "./pages/Account";
 import Home from "./pages/Home";
 import Flashcards from "./pages/Flashcards";
 import LessonPage from "./pages/Lesson";
@@ -14,6 +15,7 @@ export default function App() {
         <Route path="/praticar/flashcards" element={<Flashcards />} />
       </Route>
       <Route path="/licao/:lessonId" element={<LessonPage />} />
+      <Route path="/conta" element={<Account />} />
     </Routes>
   );
 }

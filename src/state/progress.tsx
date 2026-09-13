@@ -3,13 +3,17 @@ import {
   useContext,
   useEffect,
   useMemo,
+  useRef,
   useState,
   type ReactNode,
 } from "react";
 import { lessons } from "../data/lessons";
-import type { ProgressState } from "../types";
+import { fetchCloudRow, upsertCloudRow } from "../lib/cloudSync";
+import { useAuth } from "./auth";
+import type { LessonProgress, ProgressState } from "../types";
 
 const STORAGE_KEY = "aprenda-portugol:progress";
+const TABLE = "lesson_progress";
 
 const defaultState: ProgressState = {
   xp: 0,
@@ -27,6 +31,55 @@ function loadState(): ProgressState {
   } catch {
     return defaultState;
   }
+}
+
+interface LessonCloudRow {
+  xp: number;
+  streak: number;
+  last_active_date: string | null;
+  lesson_progress: Record<string, LessonProgress>;
+}
+
+function fromCloudRow(row: LessonCloudRow): ProgressState {
+  return {
+    xp: row.xp,
+    streak: row.streak,
+    lastActiveDate: row.last_active_date,
+    lessonProgress: row.lesson_progress ?? {},
+  };
+}
+
+function toCloudPayload(state: ProgressState) {
+  return {
+    xp: state.xp,
+    streak: state.streak,
+    last_active_date: state.lastActiveDate,
+    lesson_progress: state.lessonProgress,
+  };
+}
+
+/** One-time merge when a guest logs in: never lose progress from either side. */
+function mergeProgress(a: ProgressState, b: ProgressState): ProgressState {
+  const lessonProgress: Record<string, LessonProgress> = { ...a.lessonProgress };
+  for (const [id, bProg] of Object.entries(b.lessonProgress)) {
+    const aProg = lessonProgress[id];
+    lessonProgress[id] = aProg
+      ? {
+          completed: aProg.completed || bProg.completed,
+          stars: Math.max(aProg.stars, bProg.stars) as 0 | 1 | 2 | 3,
+          bestScore: Math.max(aProg.bestScore, bProg.bestScore),
+        }
+      : bProg;
+  }
+
+  const preferB = (b.lastActiveDate ?? "") > (a.lastActiveDate ?? "");
+
+  return {
+    xp: Math.max(a.xp, b.xp),
+    streak: preferB ? b.streak : a.streak,
+    lastActiveDate: preferB ? b.lastActiveDate : a.lastActiveDate,
+    lessonProgress,
+  };
 }
 
 function todayKey(): string {
@@ -64,7 +117,36 @@ interface ProgressContextValue {
 const ProgressContext = createContext<ProgressContextValue | null>(null);
 
 export function ProgressProvider({ children }: { children: ReactNode }) {
+  const { user } = useAuth();
   const [state, setState] = useState<ProgressState>(loadState);
+  const syncedUserRef = useRef<string | null | undefined>(undefined);
+
+  // On login, merge guest progress with the cloud copy (if any); on logout,
+  // fall back to whatever is in localStorage.
+  useEffect(() => {
+    const uid = user?.id ?? null;
+    if (syncedUserRef.current === uid) return;
+    syncedUserRef.current = uid;
+
+    if (!uid) {
+      setState(loadState());
+      return;
+    }
+
+    let cancelled = false;
+    (async () => {
+      const localGuest = loadState();
+      const cloudRow = await fetchCloudRow<LessonCloudRow>(TABLE, uid);
+      const merged = cloudRow ? mergeProgress(localGuest, fromCloudRow(cloudRow)) : localGuest;
+      if (cancelled) return;
+      await upsertCloudRow(TABLE, uid, toCloudPayload(merged));
+      if (!cancelled) setState(merged);
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [user]);
 
   useEffect(() => {
     try {
@@ -72,7 +154,10 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
     } catch {
       // ignore write failures (e.g. private browsing storage limits)
     }
-  }, [state]);
+    if (user) {
+      upsertCloudRow(TABLE, user.id, toCloudPayload(state));
+    }
+  }, [state, user]);
 
   const value = useMemo<ProgressContextValue>(() => {
     function recordLessonResult({
